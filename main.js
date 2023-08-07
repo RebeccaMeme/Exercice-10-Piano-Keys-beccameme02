@@ -6,21 +6,19 @@ keys.forEach(function(key){
 })
 
 // Write named functions that change the color of the keys below
-function keyPlay(event){
-  const key = event.target;
-  key.style.backgroundColor = 'yello';
+function keyPlay(e){
+  e.target.style.backgroundColor='yellow';
+}
+function keyReturn(e){
+  e.target.style.backgroundColor="";
 }
 // Write a named function with event handler properties
-const event = document.addEventListener('keydown',(event) => {
+function keyChangeColor(note){
+  note.addEventListener('mousedown', keyPlay);
+  note.addEventListener('mouseup', keyReturn);
+ }
 // Write a loop that runs the array elements through the function
-const keyPressed = event.key.toLowerCase();
-for( let i = 0; i < keys.lingth; i++){
-  if(keys[i].texContent.toLowerCase() === keyPressed){
-    keyPlay({ target: key[i]})
-  }
-}
-});
-
+  notes.forEach(keyChangeColor);
 // These variables store the buttons that progress the user through the lyrics
 let nextOne = document.getElementById('first-next-line');
 let nextTwo = document.getElementById('second-next-line');
@@ -44,12 +42,34 @@ function keyReturn(event){
  keys = document.querySelectorAll(".piano-key");
 keys.forEach(function(key){
   key.addEventListener("mouseup", keyReturn);
-})
+});
+function assignEventHandlers(note) {
+  let keys = document.querySelectorAll(".piano-key");
+
+  keys.forEach(function(key) {
+    key.addEventListener("mousedown", function() {
+      keyChangeColor(this, note);
+    });
+
+    key.addEventListener("mouseup", function() {
+      keyReturn(this);
+    });
+  });
+}
+
 
 
 // Write anonymous event handler property and function for the second progress button
 
+function assignEventHandlers(note) {
+  let keys = document.querySelectorAll(".piano-key");
 
+  keys.forEach(function(key) {
+    key.addEventListener("mousedown", function() {
+      console.log("Note", note, "was pressed!");
+    });
+  });
+}
 // Write anonymous event handler property and function for the third progress button
 
 
