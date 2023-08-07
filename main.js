@@ -6,13 +6,20 @@ keys.forEach(function(key){
 })
 
 // Write named functions that change the color of the keys below
-  
-
+function keyPlay(event){
+  const key = event.target;
+  key.style.backgroundColor = 'yello';
+}
 // Write a named function with event handler properties
-
-
+const event = document.addEventListener('keydown',(event) => {
 // Write a loop that runs the array elements through the function
-
+const keyPressed = event.key.toLowerCase();
+for( let i = 0; i < keys.lingth; i++){
+  if(keys[i].texContent.toLowerCase() === keyPressed){
+    keyPlay({ target: key[i]})
+  }
+}
+});
 
 // These variables store the buttons that progress the user through the lyrics
 let nextOne = document.getElementById('first-next-line');
