@@ -36,6 +36,15 @@ nextThree.hidden = true;
 startOver.hidden= true;
 
 // Write anonymous event handler property and function for the first progress button
+function keyReturn(event){
+  let targetElement = event.target;
+  targetElement.Style.backgroundColor = "";
+  targetElement.Style.color = "";
+}
+ keys = document.querySelectorAll(".piano-key");
+keys.forEach(function(key){
+  key.addEventListener("mouseup", keyReturn);
+})
 
 
 // Write anonymous event handler property and function for the second progress button
